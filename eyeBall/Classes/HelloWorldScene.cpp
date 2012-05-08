@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "Entity.h"
 
 USING_NS_CC;
 
@@ -60,13 +61,10 @@ bool HelloWorld::init()
 	this->addChild(pLabel, 1);
 
 	// add "HelloWorld" splash screen"
-	CCSprite* pSprite = CCSprite::spriteWithFile("HelloWorld.png");
-
-	// position the sprite on the center of the screen
-	pSprite->setPosition( ccp(size.width/2, size.height/2) );
-
+  CCPoint point = ccp(size.width, size.height);
+  Entity *pScreen = new Entity("HelloWorld.png", point);
 	// add the sprite as a child to this layer
-	this->addChild(pSprite, 0);
+	this->addChild(pScreen->getSprite(), 0);
 	
 	return true;
 }
