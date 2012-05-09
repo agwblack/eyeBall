@@ -20,6 +20,9 @@ public:
 
 private:
   void update(cocos2d::ccTime dt);
+
+private:
+  Entity *mBackDrop;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

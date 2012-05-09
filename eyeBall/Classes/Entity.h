@@ -63,6 +63,11 @@ class Entity
      * Consider: Fade methods?
      */
 
+    /**
+     * Update method. Called every loop.
+     */
+    virtual void update(CCTime dt);
+
   private:
     // FIXME: How many of these should be double, rather than int?
 
@@ -83,6 +88,9 @@ class Entity
      * responsible for adding and removing its sprite from the layer */
     CCLayer * mLayer;
     CCSprite * mSprite;
+
+    //FIXME: temp variables for testing things. should be removed
+    bool mEnlarging;
 };
 
 #endif
