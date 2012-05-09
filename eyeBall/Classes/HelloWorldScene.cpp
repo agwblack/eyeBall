@@ -61,11 +61,10 @@ bool HelloWorld::init()
 	this->addChild(pLabel, 1);
 
 	// add "HelloWorld" splash screen"
-  CCPoint point = ccp(size.width, size.height);
-  Entity *pScreen = new Entity("HelloWorld.png", point);
-	// add the sprite as a child to this layer
-	this->addChild(pScreen->getSprite(), 0);
+  Entity * backDrop = new Entity("HelloWorld.png", size.width/2,
+      size.height/2, this);
 	
+  this->scheduleUpdate();
 	return true;
 }
 
@@ -76,4 +75,8 @@ void HelloWorld::menuCloseCallback(CCObject* pSender)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 	exit(0);
 #endif
+}
+
+void HelloWorld::update(ccTime dt)
+{
 }

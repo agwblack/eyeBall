@@ -17,6 +17,9 @@ public:
 
 	// implement the "static node()" method manually
 	LAYER_NODE_FUNC(HelloWorld);
+
+private:
+  void update(cocos2d::ccTime dt);
 };
 
 #endif // __HELLOWORLD_SCENE_H__

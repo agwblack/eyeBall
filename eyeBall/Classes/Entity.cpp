@@ -1,49 +1,60 @@
 #include "Entity.h"
 
-Entity::Entity(const char * file, const CCPoint position)
+Entity::Entity(const char * imgFile, int xPos, int yPos, CCLayer* pLayer)
+  : mXPosition(xPos),
+    mYPosition(yPos),
+    mLayer(pLayer),
+    mScaleFactor(1)
 {
-  pSprite = CCSprite::spriteWithFile(file);
-  pSprite->setPosition(position);
+  mSprite = CCSprite::spriteWithFile(imgFile);
+  mSprite->setPosition(ccp(mXPosition, mYPosition));
+  mLayer->addChild(mSprite, 0);
 }
 
 Entity::~Entity()
 {
 }
 
-void Entity::setPosition(const CCPoint position)
-{
-  pSprite->setPosition(position);
-}
-
 void Entity::setXPosition(int xPos)
 {
-  xPosition = xPos;
-  pSprite->setPosition(ccp(xPosition, yPosition));
+  mXPosition = xPos;
 }
 
 void Entity::setYPosition(int yPos)
 {
-  yPosition = yPos;
-  pSprite->setPosition(ccp(xPosition, yPosition));
+  mYPosition = yPos;
 }
 
+void Entity::setPosition(int xPos, int yPos)
+{
+  setXPosition(xPos);
+  setYPosition(yPos);
+}
 
 int Entity::getXPosition()
 {
-  return xPosition;
+  return mXPosition;
 }
 
 int Entity::getYPosition()
 {
-  return yPosition;
+  return mYPosition;
 }
 
-CCPoint Entity::getPosition()
+CCPoint Entity::getCCPosition()
 {
-  return ccp(xPosition, yPosition);
+  return ccp(mXPosition, mYPosition);
 }
 
-CCSprite* Entity::getSprite()
+CCSprite * Entity::getSprite()
 {
-  return pSprite;
+  return mSprite;
 }
+
+void Entity::zoom(float scaleFactor)
+{
+  mScaleFactor = scaleFactor;
+  mSprite->setScale(mScaleFactor);
+}
+
+
