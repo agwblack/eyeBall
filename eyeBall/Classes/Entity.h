@@ -51,8 +51,9 @@ class Entity
     CCSprite* getSprite();
 
     /**
-     * Strategy pattern for move function
+     * TODO: Replace the below with Strategy pattern for move function
      */
+    void move(ccTime dt);
 
     /**
      * Consider: Zoom methods?
@@ -81,6 +82,7 @@ class Entity
     int mYVelocity;
     int mXAcceleration;
     int mYAcceleration;
+    float m_mass;
 
     float mScaleFactor;
 

@@ -1,7 +1,7 @@
 # set params
-NDK_ROOT=/opt/android-ndk
-COCOS2DX_ROOT=/home/andy/coding/cocos2dx
-GAME_ROOT=$COCOS2DX_ROOT/eyeBall
+NDK_ROOT=~/Development/android-ndk-r8
+COCOS2DX_ROOT=/home/agb2/coding/misc/cocos2dx
+GAME_ROOT=/home/agb2/coding/eyeBall/eyeBall
 GAME_ANDROID_ROOT=$GAME_ROOT/android
 RESOURCE_ROOT=$GAME_ROOT/Resources
 

@@ -2,3 +2,25 @@ eyeBall
 =======
 
 2D Android Platformer based on Cocos2dx.
+
+TODO
+====
+
+Medium term goal
+----------------
+Medium term goal is to create a playground level with interchangeable physics
+and entity collision.
+
+Short term goals
+----------------
+Need to implement different functions for calculating forces (magnetic
+repulsion, gravity, air resistance, friction, etc
+
+Abstract them so they can be called from anywhere (namespace Physics).
+
+Make them interchangeable at run time and implement menu options to do so.
+
+Better yet, make changing them part of the game (e.g.collect a blue ball to
+switch to magnetism paradigm, collect blue and white to switch to Gilbert model
+of magnetism, etc.). This should give opportunities to play with presenting
+text to the viewer ("Switching to Magnetism!").
