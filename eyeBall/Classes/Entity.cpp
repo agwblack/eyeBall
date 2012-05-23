@@ -84,7 +84,7 @@ void Entity::update(float t)
      like (and different implementations for each). That way we can switch
      between them readily, both for testing and for additional game features.
   */
-  updateAcceleration(calculateForces(), m_mass);
+  updateAcceleration(m_physicsRegime(this), m_mass);
 
   // update velocity (suvat equations: v = at + u)
   mXVelocity = updateVelocity(mXVelocity, mXAcceleration, t); 

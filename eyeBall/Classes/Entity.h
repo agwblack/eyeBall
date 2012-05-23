@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 
 USING_NS_CC;
+
 /**
  * Entity base class. 
  *  
@@ -20,7 +21,6 @@ USING_NS_CC;
  *
  * Uses CCSprite underneath.
  */
-
 class Entity
 {
   public:
@@ -69,6 +69,14 @@ class Entity
      */
     virtual void update(CCTime dt);
 
+    /**
+     * Method to set the Physics regime.
+     */
+    inline void setPhysicsRegime(Physics::physicsRegime physics)
+    {
+      m_physicsRegime = physics;
+    }
+
   private:
     // FIXME: How many of these should be double, rather than int?
 
@@ -78,8 +86,11 @@ class Entity
 
     /* Consider: Do all entities have a velocity and acceleration? They
      * probably should if they are all capable of movement */
+    Velocity m_velocity;
     int mXVelocity;
     int mYVelocity;
+
+    Acceleration m_acceleration;
     int mXAcceleration;
     int mYAcceleration;
     float m_mass;
@@ -93,6 +104,9 @@ class Entity
 
     //FIXME: temp variables for testing things. should be removed
     bool mEnlarging;
+
+    /* Function pointer denoting the physics regime */
+    Physics::physicsRegime m_physicsRegime;
 };
 
 #endif
