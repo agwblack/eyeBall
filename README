@@ -24,3 +24,11 @@ Better yet, make changing them part of the game (e.g.collect a blue ball to
 switch to magnetism paradigm, collect blue and white to switch to Gilbert model
 of magnetism, etc.). This should give opportunities to play with presenting
 text to the viewer ("Switching to Magnetism!").
+
+Building
+========
+This repository contains just the project folder and the Android.mk file which
+comprise the core of the game. These can be placed into an existing cocos2dx
+file structure. build-native.sh will probably need altering. Tested with 
+cocos2d-1.0.1-x0.13.0-beta. The repository contains none of the cocos2dx
+source or libraries (available at http://www.cocos2d-x.org).
