@@ -32,3 +32,11 @@ c) m_focusedEntity == NULL.
 
 We always update the m_focusedEntity first so that we can update the others
 relative to its new positions.
+
+Collision Detection
+-------------------
+
+Each Scene has a vector of moving entities. For each in turn we check if its
+Rect intersects with the Rect from each of the vector of all entities. Check
+the type of both entities involved and take appropriate action (die, reverse
+velocity, etc.).
