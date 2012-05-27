@@ -1,0 +1,34 @@
+Notes on the Game's Design and Implementation
+=============================================
+
+Movement
+--------
+
+The problem is that we like to think of movement on the map (i.e. it is the
+player that moves around the unmoving map), but that engine is only interested
+in movement on the screen (i.e. the map moves around the unmoving player). I
+propose to deal with this as follows: Each Scene has its entities in a vector
+(including map, player and other moving/unmoving elements). It will also have a
+pointer to a m_focusedEntity. This is the entity that we are focused on
+(typically the player). All movement is then relative to this entity. The
+m_position held by each entity is its map-position. It may be necessary for
+each entity to have a m_screenPosition as well. When we calculate motion, we
+are interested in the map-position but when we set position relative to the
+scene (the updatePosition method) we are interested in screen position.
+updatePosition() decides what to do based on whether the entity is focused or
+not. If m_focusedEntity is NULL, map-movement and screen-movement are 
+equivalent.  
+
+So we have 3 cases to consider when an entity is updating its position:
+
+a) m_focusedEntity == this. 
+     m_position may change but m_screenPosition will
+     not.
+b) m_focusedEntity != this && m_focusedEntity != NULL.
+     m_position may change and m_screenPosition will change depending on what
+     the focused entity's m_position.
+c) m_focusedEntity == NULL.
+     m_position and m_screenPosition are equivalent and change in the same way.
+
+We always update the m_focusedEntity first so that we can update the others
+relative to its new positions.
