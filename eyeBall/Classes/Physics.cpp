@@ -11,9 +11,11 @@
       - r = separation (meter)
    http://en.wikipedia.org/wiki/Force_between_magnets#Force_between_two_magnetic_poles
  */
-Cartesian Physics::classicalMagnetism(const Entity* ent)
+Cartesian Physics::classicalMagnetism(const PhysicalProperties* properties)
 {
   Cartesian f;
+  // FIXME: Update to use properties
+  /*
   // "Environmental variables" determined by the state of the level.
   const double permeability = 1; // Makes sense to have this as changeable
   const double goalMagnetism = 1; // should probably just be a constant
@@ -22,10 +24,11 @@ Cartesian Physics::classicalMagnetism(const Entity* ent)
       ent->magnetism(), goalMagnetism, ent->distanceToGoal().x);
   f.y = ent->propulsion().y - calculateMagneticForce(permeability, 
       ent->magnetism(), goalMagnetism, ent->distanceToGoal().y);
+  */
   return f;
 }
 
-Cartesian Physics::classicalGravity(double a, double b)
+Cartesian Physics::classicalGravity(const PhysicalProperties* properties)
 {
   Cartesian f;
   f.x = 2;
@@ -43,7 +46,7 @@ Cartesian Physics::classicalAcceleration(Cartesian forces, double mass)
 }
 
 //---Velocity
-Cartesian Physics::classicalVeloctiy(Cartesian initialVelocity, 
+Cartesian Physics::classicalVelocity(Cartesian initialVelocity, 
     Cartesian acceleration, double dt)
 {
   Cartesian finalVel;

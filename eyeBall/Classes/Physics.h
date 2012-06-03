@@ -1,8 +1,14 @@
 #ifndef _PHYSICS_H_
 #define _PHYSICS_H_
 
-#include "Entity.h"
 #include "Types.h"
+
+/* FIXME: Cannot use entity as argument since Entity uses Physics - it's
+ * circular. Should create a struct which holds all the necessary properties
+ * and give one to Entity. This will require changes to the implementation of
+ * the Physics methods. Should probably use PhysicalProperties as the argument
+ * for all methods as it makes them more versatile
+ * */
 
 /* *
  * Here are gathered the various regimes for calculating forces at work on a
@@ -14,7 +20,7 @@ namespace Physics
 {
 
   //---Models for calculating forces
-  typedef Cartesian (*forcesModel)(const Entity* ent);
+  typedef Cartesian (*forcesModel)(const PhysicalProperties* properties);
 
   /* *
    * The entity is being repelled by a magnet.
@@ -24,7 +30,7 @@ namespace Physics
    * http://en.wikipedia.org/wiki/Force_between_magnets#Force_between_two_magnetic_poles
    *
    * */
-  Cartesian classicalMagnetism(const Entity* ent);
+  Cartesian classicalMagnetism(const PhysicalProperties* properties);
 
   /* *
    * The entity falls to earth under the forces of gravity and air resistance.
@@ -33,7 +39,7 @@ namespace Physics
    * model of air resistance described here:
    *
    * */
-  Cartesian classicalGravity(const Entity* ent);
+  Cartesian classicalGravity(const PhysicalProperties* properties);
 
 
   //---Models for calculating acceleration

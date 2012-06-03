@@ -11,4 +11,11 @@ typedef struct
   double y;
 } Cartesian;
 
+/* *
+ * Holds all necessary information for physics models to work on entities
+ * TODO: Implement!
+ */
+typedef struct
+{
+} PhysicalProperties;
 #endif

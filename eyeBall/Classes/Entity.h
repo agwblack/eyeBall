@@ -3,6 +3,9 @@
 
 #include "cocos2d.h"
 
+#include "Physics.h"
+#include "Types.h"
+
 USING_NS_CC;
 
 /**
@@ -43,12 +46,12 @@ class Entity
     void setXPosition(double xPos) { m_position.x = xPos; }
     void setYPosition(double yPos) { m_position.y = yPos; }
 
-    void setAcceleration(Cartesian acc) { m_acceleration = acc }
+    void setAcceleration(Cartesian acc) { m_acceleration = acc; }
     inline void setAcceleration(double xAcc, double yAcc);
     void setXAcceleration(double xAcc) { m_acceleration.x = xAcc; }
     void setYAcceleration(double yAcc) { m_acceleration.y = yAcc; }
 
-    void setVelocity(Cartesian vel) { m_velocity = vel }
+    void setVelocity(Cartesian vel) { m_velocity = vel; }
     inline void setVelocity(double xVel, double yVel);
     void setXVelocity(double xVel) { m_velocity.x = xVel; }
     void setYVelocity(double yVel) { m_velocity.y = yVel; }
@@ -59,7 +62,7 @@ class Entity
     Cartesian position() { return m_position; }
     Cartesian velocity() { return m_velocity; }
     Cartesian acceleration() { return m_acceleration; }
-    Cartesian propulsion() { return m_propulstion; }
+    Cartesian propulsion() { return m_propulsion; }
     Cartesian distanceToGoal() { return m_distanceToGoal; } // Not sure about this
 
     double mass() { return m_mass; }
@@ -83,15 +86,16 @@ class Entity
     /**
      * Method to set the Physics regime.
      */
-    inline void setForcesModel(Physics::calculateForces model);
-    inline void setAccelerationModel(Physics::calculateAcceleration model);
-    inline void setVelocity(Physics::calculateVelocity model);
+    inline void setForcesModel(Physics::forcesModel model);
+    inline void setAccelerationModel(Physics::accelerationModel model);
+    inline void setVelocityModel(Physics::velocityModel model);
+    inline void setDisplacementModel(Physics::displacementModel model);
 
     /**
      * Utility methods
      */
     void updateSpritePosition();
-    void updateDistanceToGoal(); // not sure about this.
+    void updateDistanceToGoal(Cartesian displacement); // not sure about this.
   private:
     /* All Entities have a current position on the screen */
     Cartesian m_position;
@@ -100,6 +104,8 @@ class Entity
     Cartesian m_propulsion;
 
     Cartesian m_distanceToGoal; // Not sure about this
+
+    PhysicalProperties *m_properties;
 
     double m_magnetism;
     double m_mass;

@@ -10,7 +10,7 @@ public:
 	virtual bool init();  
 	static cocos2d::CCScene* scene();
 
-	LAYER_NODE_FUNC(HelloWorld);
+	LAYER_NODE_FUNC(Playground);
 
 private:
   void update(cocos2d::ccTime dt);

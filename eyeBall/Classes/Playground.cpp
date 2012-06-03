@@ -27,7 +27,7 @@ bool Playground::init()
   m_background = new Entity("HelloWorld.png", size.width/2,
       size.height/2, this);
 	// add eyeball
-  m_eyeBall = new Entity("eyeBall.png", size.width/2. size.height/2, this);
+  m_eyeBall = new Entity("eyeBall.png", size.width/2, size.height/2, this);
 
   this->scheduleUpdate();
 	return true;
@@ -35,6 +35,7 @@ bool Playground::init()
 
 void Playground::update(ccTime dt)
 {
+  /* TODO: Needs updating in light of NOTES */
   // update eyeball state (velocity, acceleration, etc.)
   m_eyeBall->update(dt);
 
@@ -45,10 +46,10 @@ void Playground::update(ccTime dt)
   // leftward and upward movement.
   // We multiply by (-1) because background movement happens in the opposite
   // direction to eyeBall movement
-  float xDisplacement = (-1) * dt * m_eyeBall->getXVelocity();
-  float yDisplacement = (-1) * dt * m_eyeBall->getYVelocity();
+  float xDisplacement = (-1) * dt * m_eyeBall->velocity().x;
+  float yDisplacement = (-1) * dt * m_eyeBall->velocity().y;
 
   // When there are more entities, we must do this for all of them.
-  m_background->setPosition(m_background->getXPosition() + xDisplacement, 
-                            m_background->getYPosition() + yDisplacement); 
+  m_background->setPosition(m_background->position().x + xDisplacement, 
+                            m_background->position().y + yDisplacement); 
 }
